@@ -223,8 +223,8 @@ function openOptions() {
 
 <template>
   <v-theme-provider :theme="configStore.contentScript.applyTheme ? configStore.uiTheme : ''">
-    <div ref="el" :style="style" style="position: fixed; z-index: 9999999">
-      <v-speed-dial v-model="openSpeedDial" :close-on-content-click="false" disable-initial-focus no-click-animation persistent>
+    <div ref="el" :style="style" class="ptd-container" style="position: fixed; z-index: 9999999">
+      <v-speed-dial v-model="openSpeedDial" :close-on-content-click="false" no-click-animation persistent>
         <template v-slot:activator="{ props: activatorProps }">
           <v-fab
             v-bind="activatorProps"
@@ -256,6 +256,18 @@ function openOptions() {
     />
   </v-theme-provider>
 </template>
+
+<style scoped>
+.ptd-container {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.ptd-container:hover {
+  opacity: 1;
+}
+</style>
+
 
 <style scoped lang="scss">
 @keyframes onFABLoading {
